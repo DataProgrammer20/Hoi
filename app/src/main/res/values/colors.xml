@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFB220</color>
+    <color name="colorPrimaryDark">#FAA505</color>
+    <color name="colorAccent">#FAA505</color>
+
+    <color name="textColor">#000000</color>
+    <color name="textButtonColor">#FFFFFF</color>
+    <color name="buttonColor">#FFFFB220</color>
+    <color name="backgroundColor">#f6f6f6</color>
+
+    <color name="onFocus">#FAA505</color>
+</resources>
