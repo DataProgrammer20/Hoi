@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/backgroundColor"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_weight="0"
+            android:contentDescription="@string/logo_description"
+            app:srcCompat="@mipmap/ic_phone_icon" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="300dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/app_intro"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:fontFamily="sans-serif" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/app_header"
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textColor="@color/textColor"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:fontFamily="sans-serif" />
+
+        <Button
+            android:id="@+id/signIn"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="0"
+            android:background="@color/buttonColor"
+            android:onClick="signInView"
+            android:text="@string/sign_in_button"
+            android:textColor="@color/textButtonColor"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/createNewUser"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="0"
+            android:background="@color/buttonColor"
+            android:onClick="createAccountView"
+            android:text="@string/new_user_button"
+            android:textColor="@color/textButtonColor"
+            android:textSize="18sp" />
+    </LinearLayout>
+</ScrollView>

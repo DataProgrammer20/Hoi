@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Hoi!</string>
+    <string name="app_intro">Chat With Your Friends at Anytime and Just About Anywhere!</string>
+    <string name="app_header">Choose An Option</string>
+    <string name="sign_in_button">Sign In</string>
+    <string name="new_user_button">Create New User</string>
+    <string name="logo_description">Chat logo</string>
+    <string name="emailHint">example@example.com</string>
+    <string name="passwordHint">********</string>
+    <string name="passwordConHint">*******</string>
+    <string name="signInText">Sign In</string>
+    <string name="returnToMenuText">Return to Menu</string>
+    <string name="signInHeader">Enter Your Credentials Here</string>
+    <string name="newUserHeader">Enter Your New Account Credentials</string>
+    <string name="newAccountButton">Create New Account</string>
+    <string name="messageEditText">Enter Message Here…</string>
+    <string name="messageArrow">Message Arrow</string>
+    <string name="userIcon">User Icon</string>
+    <string name="signOut">Sign Out</string>
+    <string name="menu_settings_text">Settings</string>
+    <string name="nav_option1">Actions</string>
+    <string name="nav_option2">Options</string>
+    <string name="navigation_drawer_open">open drawer</string>
+    <string name="navigation_drawer_close">close drawer</string>
+</resources>
