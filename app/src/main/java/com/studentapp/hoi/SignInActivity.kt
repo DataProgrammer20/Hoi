@@ -16,7 +16,7 @@ class SignInActivity: AppCompatActivity() {
     fun signIn(view: View) {
         var tag: String
         //Filter and prevent injection in future
-        val email = findViewById<View>(R.id.emailField).toString()
+        val email = findViewById<EditText>(R.id.emailField).text.toString()
         val password = findViewById<EditText>(R.id.passwordField).text.toString()
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(
