@@ -1,34 +1,45 @@
 package com.william.hoi.data.user
 
+import android.content.ContentValues.TAG
+import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
 import com.william.hoi.data.user.model.LoggedInUser
 import java.io.IOException
-import java.util.*
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
 class LoginDataSource {
 
-    fun login(username: String, password: String): Result<LoggedInUser> {
-        try {
-            // TODO: handle loggedInUser authentication
-            val fakeUser = LoggedInUser(
-                UUID.randomUUID().toString(),
-                "Jane Doe"
-            )
-            return Result.Success(fakeUser)
-        } catch (e: Throwable) {
-            return Result.Error(
+    // Firebase auth object
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
+
+    fun login(email: String, password: String): Result<LoggedInUser> {
+        return try {
+            var user: LoggedInUser? = null
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "loginWithEmail:success")
+                        user = LoggedInUser(
+                            auth.currentUser!!.uid,
+                            auth.currentUser!!.email.toString()
+                        )
+                    }
+                }
+            Result.Success(user)
+        } catch (exception: Throwable) {
+            Result.Error(
                 IOException(
                     "Error logging in",
-                    e
+                    exception
                 )
             )
         }
     }
 
     fun logout() {
-        // TODO: revoke authentication
+        auth.signOut()
     }
 }
 
