@@ -15,31 +15,21 @@ class LoginDataSource {
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     fun login(email: String, password: String): Result<LoggedInUser> {
-        return try {
-            var user: LoggedInUser? = null
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d(TAG, "loginWithEmail:success")
-                        user = LoggedInUser(
-                            auth.currentUser!!.uid,
-                            auth.currentUser!!.email.toString()
-                        )
-                    }
+        var user = LoggedInUser("1", "bad")
+        print("d")
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener() { task ->
+                if (task.isSuccessful) {
+                    println('n')
+                    Log.d(TAG, "loginWithEmail:success")
+                    user = LoggedInUser(auth.currentUser!!.uid, email)
                 }
-            /*
-            Will eventually want to check for errors in the
-            login process and send Result.Error if there is a problem.
-             */
-            Result.Success(user)
-        } catch (exception: Throwable) {
-            Result.Error(
-                IOException(
-                    "Error logging in",
-                    exception
-                )
-            )
-        }
+            }
+        /*
+        Will eventually want to check for errors in the
+        login process and send Result.Error if there is a problem.
+         */
+        return Result.Success(user)
     }
 
     fun logout() {
