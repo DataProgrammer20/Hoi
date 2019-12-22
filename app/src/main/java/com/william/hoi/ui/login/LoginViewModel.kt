@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import android.util.Patterns
-import com.william.hoi.data.LoginRepository
-import com.william.hoi.data.Result
+import com.william.hoi.data.user.LoginRepository
+import com.william.hoi.data.user.Result
 
 import com.william.hoi.R
 

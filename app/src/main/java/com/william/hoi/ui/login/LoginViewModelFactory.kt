@@ -2,8 +2,8 @@ package com.william.hoi.ui.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.william.hoi.data.LoginDataSource
-import com.william.hoi.data.LoginRepository
+import com.william.hoi.data.user.LoginDataSource
+import com.william.hoi.data.user.LoginRepository
 
 /**
  * ViewModel provider factory to instantiate LoginViewModel.

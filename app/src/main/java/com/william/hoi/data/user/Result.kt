@@ -1,4 +1,4 @@
-package com.william.hoi.data
+package com.william.hoi.data.user
 
 /**
  * A generic class that holds a value with its loading status.
