@@ -1,7 +1,6 @@
 package com.william.hoi.data.user
 
 import com.google.firebase.auth.FirebaseAuth
-import com.william.hoi.data.user.model.LoggedInUser
 
 /**
  * Class that requests authentication and user information from the remote data source and

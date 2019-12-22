@@ -14,7 +14,7 @@ class LoginDataSource {
 
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
-    fun login(email: String, password: String): Result<LoggedInUser> {
+    fun login(email: String, password: String): Result<Any> {
         return try {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
@@ -22,10 +22,13 @@ class LoginDataSource {
                         Log.d(TAG, "loginWithEmail:success")
                     } else {
                         Log.d(TAG, "loginWithEmail:failed")
-                        throw LoginException("Unknown account or login error")
                     }
                 }
-            Result.Success(LoggedInUser(auth.currentUser!!.uid, email))
+            if (auth.currentUser != null) {
+                Result.Success(LoggedInUser(auth.currentUser!!.uid, email))
+            } else {
+                Result.Error(LoginException("Unknown account or login error"))
+            }
         } catch (exception: Exception) {
             Result.Error(exception)
         }
