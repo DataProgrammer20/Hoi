@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import android.util.Patterns
 import com.william.hoi.data.user.LoginRepository
 import com.william.hoi.data.user.Result
-
 import com.william.hoi.R
+import com.william.hoi.data.user.model.LoggedInUser
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
@@ -21,9 +21,9 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
         // can be launched in a separate asynchronous job
         val result = loginRepository.login(username, password)
 
-        if (result is Result.Success) {
+        if (result is Result.Success && result.data is LoggedInUser) {
             _loginResult.value =
-                LoginResult(success = LoggedInUserView(displayName = result.data?.displayName))
+                LoginResult(success = LoggedInUserView(displayName = result.data.displayName))
         } else {
             _loginResult.value = LoginResult(error = R.string.login_failed)
         }

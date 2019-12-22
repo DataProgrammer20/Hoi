@@ -4,36 +4,36 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.william.hoi.data.user.model.LoggedInUser
-import java.io.IOException
+import javax.security.auth.login.LoginException
+import kotlin.Exception
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
 class LoginDataSource {
 
-    // Firebase auth object
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     fun login(email: String, password: String): Result<LoggedInUser> {
-        var user = LoggedInUser("1", "bad")
-        print("d")
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener() { task ->
-                if (task.isSuccessful) {
-                    println('n')
-                    Log.d(TAG, "loginWithEmail:success")
-                    user = LoggedInUser(auth.currentUser!!.uid, email)
+        return try {
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "loginWithEmail:success")
+                    } else {
+                        Log.d(TAG, "loginWithEmail:failed")
+                        throw LoginException("Unknown account or login error")
+                    }
                 }
-            }
-        /*
-        Will eventually want to check for errors in the
-        login process and send Result.Error if there is a problem.
-         */
-        return Result.Success(user)
+            Result.Success(LoggedInUser(auth.currentUser!!.uid, email))
+        } catch (exception: Exception) {
+            Result.Error(exception)
+        }
     }
+
+//    fun createAccount(email: String, password: String): Result<LoggedInUser> {}
 
     fun logout() {
         auth.signOut()
     }
 }
-

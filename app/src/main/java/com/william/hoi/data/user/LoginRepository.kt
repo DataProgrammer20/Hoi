@@ -1,5 +1,6 @@
 package com.william.hoi.data.user
 
+import com.google.firebase.auth.FirebaseAuth
 import com.william.hoi.data.user.model.LoggedInUser
 
 /**
@@ -9,29 +10,19 @@ import com.william.hoi.data.user.model.LoggedInUser
 
 class LoginRepository(val dataSource: LoginDataSource) {
 
-    // in-memory cache of the loggedInUser object
-    var user: LoggedInUser? = null
-        private set
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     val isLoggedIn: Boolean
-        get() = user != null
+        // check if logged in
+        get() = auth.currentUser != null
 
     fun logout() {
-        user = null
+        // handle logout
         dataSource.logout()
     }
 
-    fun login(username: String, password: String): Result<LoggedInUser> {
+    fun login(username: String, password: String): Result<Any> {
         // handle login
-        val result = dataSource.login(username, password)
-        if (result is Result.Success) {
-            setLoggedInUser(result.data)
-        }
-
-        return result
-    }
-
-    private fun setLoggedInUser(loggedInUser: LoggedInUser?) {
-        this.user = loggedInUser
+        return dataSource.login(username, password)
     }
 }
