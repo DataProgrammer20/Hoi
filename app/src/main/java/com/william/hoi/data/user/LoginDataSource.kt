@@ -27,6 +27,10 @@ class LoginDataSource {
                         )
                     }
                 }
+            /*
+            Will eventually want to check for errors in the
+            login process and send Result.Error if there is a problem.
+             */
             Result.Success(user)
         } catch (exception: Throwable) {
             Result.Error(
