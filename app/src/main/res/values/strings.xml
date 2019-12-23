@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Hoi</string>
-    <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
@@ -11,6 +10,6 @@
     <string name="invalid_password">Password must be > 5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_main_menu">MainMenuActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_contacts">Contacts</string>
+    <string name="tab_text_calendar">Calendar</string>
 </resources>
