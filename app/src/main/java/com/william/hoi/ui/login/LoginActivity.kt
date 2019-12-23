@@ -1,6 +1,7 @@
 package com.william.hoi.ui.login
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -16,6 +17,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.william.hoi.R
+import com.william.hoi.ui.menu.MainMenuActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -106,6 +108,13 @@ class LoginActivity : AppCompatActivity() {
             Toast.LENGTH_LONG
         ).show()
         // TODO : initiate successful logged in experience
+        // Redirect to main menu
+        /*
+        Note: Will need to cache authentication data in the future
+        so that the user will not need to log in every time.
+         */
+        val intent = Intent(this, MainMenuActivity::class.java)
+        startActivity(intent)
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {
